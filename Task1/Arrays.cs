@@ -149,7 +149,7 @@ namespace Task1
             for (int i = 1; i < array.Length; i++)
             {
                 int j = i - 1;
-                while (j > 0 && array[j] > array[j + 1])
+                while (j >= 0 && array[j] < array[j + 1])
                 { 
                     int tmp = array[j];
                     array[j] = array[j + 1];
@@ -162,7 +162,7 @@ namespace Task1
         }
 
 
-        public static void FillArray()
+        public static int[] FillArray()
         {
             int[] array = new int[10];
             Random rand = new Random();
@@ -170,6 +170,8 @@ namespace Task1
             {
                 array[i] = rand.Next(-100, 100);
             }
+
+            return array;
         }
 
         public static void DisplayArray(int[] array)
