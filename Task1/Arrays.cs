@@ -160,5 +160,23 @@ namespace Task1
 
             return array;
         }
+
+
+        public static void FillArray(int[] array)
+        {
+            Random rand = new Random();
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = rand.Next(-100, 100);
+            }
+        }
+
+        public static void DisplayArray(int[] array)
+        {
+            for (int i = 0; i < array.Length; i++)
+            {
+                Console.Write(array[i] + " ");
+            }
+        }
     }
 }
