@@ -41,14 +41,18 @@ namespace Task1
             {
                 result = "Точка находится в 3 четверти";
             }
-            else 
+            else if (x > 0 && y < 0)
             { 
                 result = "Точка находится в 4 четверти";
+            }
+            else
+            {
+                result = "Точка лежит на оси";
             }
             return result;
         }
 
-        public static double[] GetSorted(double number1, double number2, double number3)
+        public static double[] Sorted(double number1, double number2, double number3)
         {
             double[] sorted;
             if (number1 >= number2 && number2 >= number3 && number1 >= number3)
@@ -78,25 +82,50 @@ namespace Task1
             return sorted;
         }
 
-        public static string GetRootsOfQuadraticEquation(double a, double b, double c)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="a">mustn`t be equal 0</param>
+        /// <param name="b"></param>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        public static double[] GetRootsOfQuadraticEquation(double a, double b, double c)
         {
-            string result;
+            if (a == 0)
+            {
+                throw new Exception("a == 0, this isn`t quadratic equation");
+            }
+            double[] result;
             double d = b * b - 4 * a * c;
             if (d < 0)
             { 
-                result = "Корней нет"; 
+                result = new double[0]; 
+            }
+            if (d == 0)
+            {
+                result = new double[1] { -b / (2 * a) };
             }
             else
             {
                 double x1 = (-b + Math.Sqrt(d)) / (2 * a);
                 double x2 = (-b - Math.Sqrt(d)) / (2 * a);
-                result = $"x1 = {x1}, x2 = {x2}";
+                result = new double[2] { x1, x2 };
             }
             return result;
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="number">number must be > 9 and < 100</param>
+        /// <returns></returns>
         public static string GetNumberInWords(int number)
         {
+            if (number < 10 || number > 99)
+            {
+                throw new Exception("number must be > 9 and < 100");
+            }
             string dec;
             string un;
             string result;
