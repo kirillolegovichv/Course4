@@ -18,8 +18,17 @@ namespace Task1
             return result;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="number">must be > 0</param>
+        /// <returns></returns>
         public static int[] GetSequenceThatMultipleOfA(int number)
         {
+            if (number <= 0)
+            {
+                throw new Exception("Number must be > 0");
+            }
             int count = 0;
             for (int i = number; i <= 1000; i += number)
             {
@@ -49,7 +58,11 @@ namespace Task1
 
         public static int ReturnLargestDivisor(int number)
         {
-            int result = 0;
+            if (number < 0)
+            {
+                throw new Exception("number must be non antipositive");
+            }
+            int result = 1;
 
             for (int i = 1; i < number; i++)
             {
@@ -62,7 +75,7 @@ namespace Task1
             return result;
         }
 
-        public static int ReturnSummOfNumbersWhatDividedOnSeven(int number1, int number2)
+        public static int ReturnSummOfNumbersWhatDividedBySeven(int number1, int number2)
         {
             int result = 0;
 
@@ -79,6 +92,10 @@ namespace Task1
 
         public static int ReturnFibonacheNumberByPosition(int  number)
         {
+            if (number < 1)
+            {
+                throw new Exception("number must be > 0");
+            }
             int A = 1;
             int B = 1;
             int next;
@@ -94,6 +111,10 @@ namespace Task1
 
         public static int ReturnGreatestCommonDivision(int number1, int number2)
         {
+            if (number1 <= 0 || number2 <= 0)
+            {
+                throw new Exception("numbers must be positive");
+            }
             while (number1 != 0 && number2 != 0)
             {
                 if (number1 > number2)
@@ -109,8 +130,12 @@ namespace Task1
             return number1 + number2;
         }
 
-        public static int ReturnCubicRootOfEvenNumber(int number)
+        public static int ReturnCubicRootOfPositiveNumber(int number)
         {
+            if (number <= 0)
+            {
+                throw new Exception("number must be positive");
+            }
             int A = 0;
             int B = number;
             int middle;
@@ -154,6 +179,10 @@ namespace Task1
 
         public static int ReturnReversOfNumber(int number)
         {
+            if (number < 0)
+            {
+                throw new Exception("number must be positive");
+            }            
             int result = 0;
 
             while (number > 0)
@@ -168,7 +197,6 @@ namespace Task1
 
             return result;
         }
-
 
         public static void GetCountOfEvenAndOdd(int i, out int odd, out int even)
         {
@@ -188,6 +216,7 @@ namespace Task1
                 tmp /= 10;
             }
         }
+        
         public static int[] ReturnNumbersSummEvenOfThemMoreThanSummOdd(int number)
         {
             int tmp = 0;
